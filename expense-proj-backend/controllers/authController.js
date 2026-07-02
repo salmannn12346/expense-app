@@ -3,10 +3,10 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 const generateAccessToken=(id)=>{
-return jwt.sign({id},"jwt_Secret",{expiresIn:"15m"});
+return jwt.sign({id},process.env.JWT_SECRET,{expiresIn:"15m"});
 }
 const generateRefreshToken=(id)=>{
-return jwt.sign({id},"refresh_Secret",{expiresIn:"7d"});
+return jwt.sign({id},process.env.REFRESH_SECRET,{expiresIn:"7d"});
 }
 
 export const signUp=async (req,res)=>{
@@ -87,7 +87,7 @@ export const refresh =async(req,res)=>{
    return res.status(401).json({message:"unauthorized"});
     }
     try{
-        const decoded=jwt.verify(refreshToken,"refresh_Secret");
+        const decoded=jwt.verify(refreshToken,process.env.REFRESH_SECRET);
         const user=await authModel.findById(decoded.id);
         if(!user){
             return res.status(401).json({message:"user not found"});

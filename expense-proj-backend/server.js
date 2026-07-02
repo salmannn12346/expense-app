@@ -7,7 +7,7 @@ import userRouter from "./routes/userRoutes.js";
 import cookieParser from "cookie-parser";
 import expenseRouter from "./routes/expenseRoutes.js";
 import {connectRedis} from "./config/redis.js"
-dotenv.config();
+dotenv.config(); 
 const app = express();
 const port = process.env.PORT;
 await dbConnect();
