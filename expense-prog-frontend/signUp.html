@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Auth</title>
+  <style>
+    #result{
+      width: 300px;
+      min-height: 100px;
+      border: 2px solid black;
+      padding: 10px;
+    }
+    #container{
+        width: 300px;
+        height: 500px;
+        margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+Enter name :<input type="text" id="name" name="name" ><br><br>
+Enter email :<input type="email" id="email" name="email" ><br><br>
+Enter password :<input type="password" id="password" name="password" ><br><br>
+<button onclick="signUp()">signup</button>
+
+<div id="result">
+  
+</div>
+</div>
+<script>
+   const name=document.getElementById("name");
+    const email=document.getElementById("email");
+    const password=document.getElementById("password");
+    const result=document.getElementById("result");
+
+const signUp=async ()=>{
+    if (!name.value || !email.value || !password.value) {
+      result.style.color="red";
+      result.innerText = "All fields are required";
+  return;
+}
+    try{
+   const res= await fetch("http://localhost:3000/auth/signUp",{
+   method:"POST",
+   headers:{  
+    "Content-Type" :"application/json",
+   },
+   body:JSON.stringify({
+    name:name.value,
+    email:email.value,
+    password:password.value})
+   });
+   let data;
+   try{data=await res.json();}
+   catch{
+  throw new Error("Invalid server respose");
+   }
+   if(!res.ok){
+    result.style.color="red";
+  result.innerText=data.message;
+return;}
+if(data.token){
+    localStorage.setItem("token",data.token);
+   }
+result.style.color="green";
+   result.innerText=data.message;
+   window.location.href="/dashboard/dashboard.html";
+    }
+    catch(e){
+    result.style.color="red";
+   result.innerText=e.message
+    }
+}
+
+</script>
+
+</body>
+</html>

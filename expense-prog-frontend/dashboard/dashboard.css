@@ -1,0 +1,240 @@
+/* Reset */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+.expense-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.expense-form input,
+.expense-form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.expense-form button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+/* Body */
+body{
+    background: #0f172a;
+    color: white;
+    min-height: 100vh;
+}
+
+/* Layout */
+.dashboard-container{
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar{
+    width: 250px;
+    background: #111827;
+    padding: 30px 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Logo */
+.logo h2{
+    font-size: 28px;
+    color: #4da3ff;
+    margin-bottom: 40px;
+}
+
+/* Navigation */
+.sidebar nav ul{
+    list-style: none;
+}
+
+.sidebar nav ul li{
+    padding: 14px 16px;
+    margin-bottom: 10px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+    transition: 0.3s;
+
+    color: rgba(255,255,255,0.8);
+}
+
+.sidebar nav ul li:hover,
+.sidebar nav ul li.active{
+    background: rgba(77,163,255,0.15);
+    color: #4da3ff;
+}
+
+/* Logout Button */
+.logout-btn{
+    width: 100%;
+    padding: 14px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: linear-gradient(135deg, #ff4d4d, #d10000);
+
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.logout-btn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255,0,0,0.35);
+}
+
+/* Main Content */
+.main-content{
+    flex: 1;
+    padding: 40px;
+}
+
+/* Topbar */
+.topbar{
+    margin-bottom: 30px;
+}
+
+.topbar h1{
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.topbar p{
+    color: rgba(255,255,255,0.7);
+}
+
+/* Content Box */
+.content-box{
+    background: #1e293b;
+    padding: 30px;
+
+    border-radius: 18px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.content-box h2{
+    margin-bottom: 20px;
+}
+
+/* Dynamic App Data */
+#app{
+    min-height: 120px;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.05);
+
+    color: rgba(255,255,255,0.9);
+
+    overflow-wrap: break-word;
+}
+
+/* Responsive */
+@media(max-width: 768px){
+
+    .dashboard-container{
+        flex-direction: column;
+    }
+
+    .sidebar{
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .sidebar nav{
+        display: none;
+    }
+
+    .main-content{
+        padding: 20px;
+    }
+}
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.5);
+    display:flex;
+    height: 600px;
+    justify-content:center;
+    align-items:center;
+}
+
+.hidden{
+    display:none;
+}
+
+.modal-content{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    min-width:300px;
+}
+.expenseCard{
+    padding:16px;
+    margin-bottom:12px;
+    background:white;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    border-left:4px solid #4f46e5;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    color:#333;
+    font-size:16px;
+    font-weight:500;
+}
+
+.editButton,
+.deleteButton{
+    margin-left:auto;
+    padding:6px 12px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.deleteButton{
+    margin-left:0;
+    background:#ef4444;
+    color:white;
+}
+
+.editButton{
+    background:#facc15;
+}
+#chart{
+    background-color: white;
+}
